@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 05</title>
+</head>
+<body>
+        <label>Digite uma letra:</label></br>
+        <input type="text" name="caixa" id="caixa_texto">
+        <button type="button" onclick="compararLetras()">Comparar</button>
+        <p id="resultado"></p>
+
+        <label>Digite uma Palavra:</label></br>
+        <input type="text" name="caixa" id="texto_palindromo">
+        <button type="button" onclick="palindromo()">Testar</button>
+        <p id="resultado_palindromo"></p>
+
+        <label>Digite sua idade:</label></br>
+        <input type="text" name="caixa" id="idade">
+        <button type="button" onclick="comp_idade()">Verificar</button>
+        <p id="resultado_idade"></p>
+
+
+
+        <script>
+            function compararLetras(){
+                const valor_texto = document.getElementById("caixa_texto").value
+                const res = document.getElementById("resultado")
+
+                if(valor_texto[0] == "A"){
+                    res.innerHTML += `Digitou A`
+
+                }else if(valor_texto[0] == "a"){
+                    res.innerHTML += `Digitou a`
+                }
+            }
+
+            function palindromo(){
+                const valor_texto = String (document.getElementById("texto_palindromo").value)
+                const res = document.getElementById("resultado_palindromo")
+
+
+                let ordem_certa = []
+                let ordem_inversa = []
+                let i=0
+                let verdadeiro = 0
+                let cont =0
+                while(i<= valor_texto.length){
+                    ordem_certa.push(valor_texto[i])
+                    i++
+                    ordem_inversa.push(valor_texto[valor_texto.length-i])
+                    
+                    
+                }
+
+
+                while(cont <= valor_texto.length){
+                    if(ordem_certa[cont] == ordem_inversa[cont]){
+                        verdadeiro = verdadeiro +1
+                    }
+                    cont++
+                }
+                verdadeiro = verdadeiro -1
+                if(verdadeiro == valor_texto.length){
+                    res.innerHTML += `É palíndromo`
+                }else{
+                    res.innerHTML += `Não é palíndromo`
+                }
+            }
+
+            function comp_idade(){
+                const idade = Number(document.getElementById("idade").value)
+                const res = document.getElementById("resultado_idade")
+
+                if(idade<18){
+                    res.innerHTML += `Menor de idade`
+                }else{
+                    res.innerHTML += `Maior de idade`
+                }
+            }
+
+        </script>
+</body>
+</html>
